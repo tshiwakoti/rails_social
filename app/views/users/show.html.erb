@@ -1,0 +1,19 @@
+<h4> This is user show page </h4>
+<h6> ID : <%=@user.id %> </h6>
+<h6> Name: <%=@user.name %> </h6>
+<h6> Email: <%=@user.email %> </h6>
+
+<a href = "<%=@user.id%>/edit"> Edit Profile </a>
+
+<h4> All Secrets </h4>
+
+<% @secrets.each do |secret| %>
+      <p> <%=secret.content%> </p>
+  <% end %>
+
+<form action="/secrets/" method="post">
+  <input type = "hidden" name = "authenticity_token" value ="<%=form_authenticity_token%>"
+  <label for="content">New Secret</label>
+  <input id = "content" name = "content" type = "text">
+  <input type = "submit" value = "New Secret">
+</form>
